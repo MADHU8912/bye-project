@@ -1,0 +1,23 @@
+name: Build Report
+
+on:
+ push:
+  branches: [ main ]
+
+jobs:
+ build:
+  runs-on: ubuntu-latest
+
+  steps:
+  - name: Checkout Code
+    uses: actions/checkout@v4
+
+  - name: Build Step
+    run: echo "Build Successful"
+
+  - name: Build Report
+    run: echo "Build Status SUCCESS"
+
+  - name: Deploy Step
+    run: echo "Deploy Successful"
+    
