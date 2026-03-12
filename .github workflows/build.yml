@@ -1,8 +1,9 @@
-name: Build Report Pipeline
+name: Build Report Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
 
@@ -12,23 +13,19 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Build Step
-        run: echo "Build Successful"
+      - name: Build Project
+        run: echo "Build completed"
 
-  build-report:
+  report-build-status:
+    needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Build Report
-        run: echo "Build Status SUCCESS"
+      - name: Report Build Status
+        run: echo "Build successful"
 
   deploy:
+    needs: report-build-status
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy Step
-        run: echo "Deploy Successful"
-
-  deploy-report:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy Report
-        run: echo "Deploy Status SUCCESS"
+      - name: Deploy Project
+        run: echo "Deployment completed"
